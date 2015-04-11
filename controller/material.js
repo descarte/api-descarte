@@ -17,20 +17,4 @@ router.route('/')
 		//res.status(200).send(req.body);
 	});
 
-router.route('/create')
-	.get(function(req, res) {
-		model.Material.create({
-			name: 'Material 01'
-		});
-
-		model.Material.create({
-			name: 'Material 02'
-		});
-
-		model.Material.create({
-			name: 'Material 03',
-		});
-		res.status(200).send();
-	})
-
 module.exports = router;

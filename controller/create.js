@@ -3,6 +3,9 @@ var model  = require('../model');
 var request = require("request");
 var fs = require('fs');
 
+router.route('/').get(function(req, res) {
+	res.status(200).send('<a href="type">Type</a><br><a href="material">material</a><br> <a href="ecopontos">ecopontos</a><br> <a href="pilhas">pilhas</a><br> <a href="eletronicos">eletronicos</a><br> <a href="oleo">oleo</a><br> <a href="pneus">pneus</a><br> <a href="remedios">remedios</a><br> <a href="container">container</a><br> <a href="lixeira">lixeira</a>'); });
+
 router.route('/type').get(function(req, res) {
 	model.Type.create({ id:1, name: 'Container' });
 	model.Type.create({ id:2, name: 'Cooperativa' });
@@ -37,8 +40,8 @@ router.route('/ecopontos').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.nome,
-				latitude: e.latitude,
-				longitude: e.longitude,
+				lat: e.latitude,
+				lng: e.longitude,
 				phone: e.telefone,
 				site: '',
 				TypeId: 3
@@ -56,8 +59,8 @@ router.route('/pilhas').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.nome,
-				latitude: e.latitude,
-				longitude: e.longitude,
+				lat: e.latitude,
+				lng: e.longitude,
 				phone: e.telefone,
 				site: e.site,
 				TypeId: 5
@@ -75,8 +78,8 @@ router.route('/eletronicos').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.nome,
-				latitude: e.latitude,
-				longitude: e.longitude,
+				lat: e.latitude,
+				lng: e.longitude,
 				phone: e.telefone,
 				site: e.site,
 				TypeId: 5
@@ -94,8 +97,8 @@ router.route('/oleo').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.empresa_coletora != '' ? e.empresa_coletora : e.nome,
-				latitude: e.latitude,
-				longitude: e.longitude,
+				lat: e.latitude,
+				lng: e.longitude,
 				phone: e.telefone,
 				TypeId: 6
 			}).done(function (err, spot) {
@@ -113,8 +116,8 @@ router.route('/pneus').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.nome,
-				latitude: e.latitude,
-				longitude: e.longitude,
+				lat: e.latitude,
+				lng: e.longitude,
 				phone: e.telefone,
 				TypeId: 6
 			}).done(function (err, spot) {
@@ -131,8 +134,8 @@ router.route('/remedios').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.nome,
-				latitude: e.latitude,
-				longitude: e.longitude,
+				lat: e.latitude,
+				lng: e.longitude,
 				phone: e.telefone,
 				site: e.site,
 				TypeId: 5
@@ -150,8 +153,8 @@ router.route('/container').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.LOGRADOURO,
-				latitude: e.LATITUDE,
-				longitude: e.LONGITUDE,
+				lat: e.LATITUDE,
+				lng: e.LONGITUDE,
 				TypeId: 1
 			}).done(function (err, spot) {
 				spot.setMaterials([5]);
@@ -167,8 +170,8 @@ router.route('/lixeira').get(function(req, res) {
 		JSON.parse(data).forEach(function(e){
 			model.Spot.create({
 				name: e.NOME,
-				latitude: e.LATITUDE,
-				longitude: e.LONGITUDE,
+				lat: e.LATITUDE,
+				lng: e.LONGITUDE,
 				TypeId: 4
 			}).done(function (err, spot) {
 				spot.setMaterials([5]);

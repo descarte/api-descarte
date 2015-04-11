@@ -17,15 +17,4 @@ router.route('/')
 		//res.status(200).send(req.body);
 	});
 
-router.route('/create')
-	.get(function(req, res) {
-		model.Type.create({
-			name: 'Tipo 01'
-		});
-		model.Type.create({
-			name: 'Tipo 02'
-		});
-		res.status(200).send();
-	})
-
 module.exports = router;
