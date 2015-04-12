@@ -6,6 +6,7 @@ router.route('/')
 	.get(function(req, res) {
 		model.Spot
 			.findAll({
+				//where: ['lat IS NOT NULL AND lng IS NOT NULL'],
 				include: [ { model: model.Material }, { model: model.Type }]
 			})
 			.then(function(result) {

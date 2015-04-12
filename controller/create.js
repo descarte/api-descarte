@@ -45,17 +45,20 @@ router.route('/material').get(function(req, res) {
 router.route('/ecopontos').get(function(req, res) {
 	fs.readFile('./db/ecopontos.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.nome,
-				lat: e.latitude,
-				lng: e.longitude,
-				phone: e.telefone,
-				site: '',
-				TypeId: 3
-			}).done(function (err, spot) {
-				spot.setMaterials([6, 4, 7, 3, 14, 1, 13]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.latitude && e.longitude)
+				model.Spot.create({
+					name: e.nome,
+					lat: e.latitude,
+					lng: e.longitude,
+					phone: e.telefone,
+					site: '',
+					TypeId: 3
+				}).done(function (err, spot) {
+					spot.setMaterials([6, 4, 7, 3, 14, 1, 13]);
+				});		
 		});
 	});
 	res.status(200).send('Ecopontos importados com sucesso.');
@@ -64,17 +67,20 @@ router.route('/ecopontos').get(function(req, res) {
 router.route('/pilhas').get(function(req, res) {
 	fs.readFile('./db/pilhas.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.nome,
-				lat: e.latitude,
-				lng: e.longitude,
-				phone: e.telefone,
-				site: e.site,
-				TypeId: 5
-			}).done(function (err, spot) {
-				spot.setMaterials([10]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.latitude && e.longitude)
+				model.Spot.create({
+					name: e.nome,
+					lat: e.latitude,
+					lng: e.longitude,
+					phone: e.telefone,
+					site: e.site,
+					TypeId: 5
+				}).done(function (err, spot) {
+					spot.setMaterials([10]);
+				});
 		});
 	});
 	res.status(200).send('Pilhas importados com sucesso.');
@@ -83,17 +89,20 @@ router.route('/pilhas').get(function(req, res) {
 router.route('/eletronicos').get(function(req, res) {
 	fs.readFile('./db/eletronicos.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.nome,
-				lat: e.latitude,
-				lng: e.longitude,
-				phone: e.telefone,
-				site: e.site,
-				TypeId: 5
-			}).done(function (err, spot) {
-				spot.setMaterials([2]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.latitude && e.longitude)
+				model.Spot.create({
+					name: e.nome,
+					lat: e.latitude,
+					lng: e.longitude,
+					phone: e.telefone,
+					site: e.site,
+					TypeId: 5
+				}).done(function (err, spot) {
+					spot.setMaterials([2]);
+				});			
 		});
 	});
 	res.status(200).send('Eletronicos importados com sucesso.');
@@ -102,16 +111,19 @@ router.route('/eletronicos').get(function(req, res) {
 router.route('/oleo').get(function(req, res) {
 	fs.readFile('./db/oleo.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.empresa_coletora != '' ? e.empresa_coletora : e.nome,
-				lat: e.latitude,
-				lng: e.longitude,
-				phone: e.telefone,
-				TypeId: 6
-			}).done(function (err, spot) {
-				spot.setMaterials([8]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.latitude && e.longitude)
+				model.Spot.create({
+					name: e.empresa_coletora != '' ? e.empresa_coletora : e.nome,
+					lat: e.latitude,
+					lng: e.longitude,
+					phone: e.telefone,
+					TypeId: 6
+				}).done(function (err, spot) {
+					spot.setMaterials([8]);
+				});			
 		});
 	});
 	res.status(200).send('Oleos importados com sucesso.');
@@ -121,16 +133,19 @@ router.route('/oleo').get(function(req, res) {
 router.route('/pneus').get(function(req, res) {
 	fs.readFile('./db/pneus.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.nome,
-				lat: e.latitude,
-				lng: e.longitude,
-				phone: e.telefone,
-				TypeId: 6
-			}).done(function (err, spot) {
-				spot.setMaterials([11]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.latitude && e.longitude)
+				model.Spot.create({
+					name: e.nome,
+					lat: e.latitude,
+					lng: e.longitude,
+					phone: e.telefone,
+					TypeId: 6
+				}).done(function (err, spot) {
+					spot.setMaterials([11]);
+				});			
 		});
 	});
 	res.status(200).send('Pneus importados com sucesso.');
@@ -139,17 +154,20 @@ router.route('/pneus').get(function(req, res) {
 router.route('/remedios').get(function(req, res) {
 	fs.readFile('./db/remedios.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.nome,
-				lat: e.latitude,
-				lng: e.longitude,
-				phone: e.telefone,
-				site: e.site,
-				TypeId: 5
-			}).done(function (err, spot) {
-				spot.setMaterials([12]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.latitude && e.longitude)
+				model.Spot.create({
+					name: e.nome,
+					lat: e.latitude,
+					lng: e.longitude,
+					phone: e.telefone,
+					site: e.site,
+					TypeId: 5
+				}).done(function (err, spot) {
+					spot.setMaterials([12]);
+				});			
 		});
 	});
 	res.status(200).send('Remedios importados com sucesso.');
@@ -158,16 +176,19 @@ router.route('/remedios').get(function(req, res) {
 router.route('/container').get(function(req, res) {
 	fs.readFile('./db/container.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.LOGRADOURO,
-				lat: e.LATITUDE,
-				lng: e.LONGITUDE,
-				TypeId: 1
-			}).done(function (err, spot) {
-				spot.setMaterials([5]);
-			});			
-		});
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.LATITUDE && e.LONGITUDE)
+				model.Spot.create({
+					name: e.LOGRADOURO,
+					lat: e.LATITUDE,
+					lng: e.LONGITUDE,
+					TypeId: 1
+				}).done(function (err, spot) {
+					spot.setMaterials([5]);
+				});			
+			});
 	});
 	res.status(200).send('Containers importados com sucesso.');
 });
@@ -175,15 +196,18 @@ router.route('/container').get(function(req, res) {
 router.route('/lixeira').get(function(req, res) {
 	fs.readFile('./db/lixeira.json', function (err, data) {
 		if (err) throw err;
-		JSON.parse(data).forEach(function(e){
-			model.Spot.create({
-				name: e.NOME,
-				lat: e.LATITUDE,
-				lng: e.LONGITUDE,
-				TypeId: 4
-			}).done(function (err, spot) {
-				spot.setMaterials([5]);
-			});			
+		JSON.parse(data).forEach(function(e, idx){
+			if(idx >= 100)
+				return false;
+			if(e.LATITUDE && e.LONGITUDE)
+				model.Spot.create({
+					name: e.NOME,
+					lat: e.LATITUDE,
+					lng: e.LONGITUDE,
+					TypeId: 4
+				}).done(function (err, spot) {
+					spot.setMaterials([5]);
+				});			
 		});
 	});
 	res.status(200).send('Lixeiras importados com sucesso.');
