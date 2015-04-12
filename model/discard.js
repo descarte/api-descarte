@@ -2,12 +2,17 @@
 
 module.exports = function(sequelize, DataTypes) {
 	var Discard = sequelize.define("Discard", {
-		name: DataTypes.STRING
+		title: DataTypes.STRING,
+		lat: DataTypes.FLOAT(53),
+		lng: DataTypes.FLOAT(53),
+		name: DataTypes.STRING,
+		email: DataTypes.STRING,
+		description: DataTypes.STRING
 	}, {
 		classMethods: {
 			associate: function(model) {
-				//Spot.belongsToMany(model.Material, { as: 'materials' })
-				Discard.belongsToMany(model.Material, { through: 'DiscardMaterial' })
+				Discard.belongsToMany(model.Material, { through: 'DiscardMaterial' });
+				Discard.belongsTo(model.Situation);
 			}
 		}
 	});

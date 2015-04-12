@@ -4,33 +4,41 @@ var request = require("request");
 var fs = require('fs');
 
 router.route('/').get(function(req, res) {
-	res.status(200).send('<a href="type">Type</a><br><a href="material">material</a><br> <a href="ecopontos">ecopontos</a><br> <a href="pilhas">pilhas</a><br> <a href="eletronicos">eletronicos</a><br> <a href="oleo">oleo</a><br> <a href="pneus">pneus</a><br> <a href="remedios">remedios</a><br> <a href="container">container</a><br> <a href="lixeira">lixeira</a>'); });
+	res.status(200).send('<a href="situation">situation</a><br><a href="type">type</a><br><a href="material">material</a><br> <a href="ecopontos">ecopontos</a><br> <a href="pilhas">pilhas</a><br> <a href="eletronicos">eletronicos</a><br> <a href="oleo">oleo</a><br> <a href="pneus">pneus</a><br> <a href="remedios">remedios</a><br> <a href="container">container</a><br> <a href="lixeira">lixeira</a>');
+});
+
+router.route('/situation').get(function(req, res) {
+	model.Situation.create({ id:1, name: 'Novo' });
+	model.Situation.create({ id:2, name: 'Semi-novo' });
+	model.Situation.create({ id:3, name: 'Resíduo' });
+	res.status(200).send('Situations criados com sucesso.');
+});
 
 router.route('/type').get(function(req, res) {
 	model.Type.create({ id:1, name: 'Container' });
 	model.Type.create({ id:2, name: 'Cooperativa' });
 	model.Type.create({ id:3, name: 'Ecoponto' });
 	model.Type.create({ id:4, name: 'Lixeira' });
-	model.Type.create({ id:5, name: 'Ponte de descarte' });
+	model.Type.create({ id:5, name: 'Ponto de descarte' });
 	model.Type.create({ id:6, name: 'Reciclagem' });
 	res.status(200).send('Types criados com sucesso.');
 });
 
 router.route('/material').get(function(req, res) {
-	model.Material.create({ id:1, name: 'Eletrodoméstico' }); //id: 1
-	model.Material.create({ id:2, name: 'Eletrônico' }); //id: 2
-	model.Material.create({ id:3, name: 'Entulho' }); //id: 3
-	model.Material.create({ id:4, name: 'Latinha' }); //id: 4
-	model.Material.create({ id:5, name: 'Lixo comum' }); //id: 5
-	model.Material.create({ id:6, name: 'Madeira' }); //id: 6
-	model.Material.create({ id:7, name: 'Móvel' }); //id: 7
-	model.Material.create({ id:8, name: 'Oleo' }); //id: 8
-	model.Material.create({ id:9, name: 'Outros' }); //id: 9
-	model.Material.create({ id:10, name: 'Pilha' }); //id: 10
-	model.Material.create({ id:11, name: 'Pneu' }); //id: 11
-	model.Material.create({ id:12, name: 'Remédio' }); //id: 12
-	model.Material.create({ id:13, name: 'Resíduo em geral' }); //id: 13
-	model.Material.create({ id:14, name: 'Sucata' }); //id: 14
+	model.Material.create({ id:1, name: 'Eletrodoméstico' });
+	model.Material.create({ id:2, name: 'Eletrônico' });
+	model.Material.create({ id:3, name: 'Entulho' });
+	model.Material.create({ id:4, name: 'Latinha' });
+	model.Material.create({ id:5, name: 'Lixo comum' });
+	model.Material.create({ id:6, name: 'Madeira' });
+	model.Material.create({ id:7, name: 'Móvel' });
+	model.Material.create({ id:8, name: 'Oleo' });
+	model.Material.create({ id:9, name: 'Outros' });
+	model.Material.create({ id:10, name: 'Pilha' });
+	model.Material.create({ id:11, name: 'Pneu' });
+	model.Material.create({ id:12, name: 'Remédio' });
+	model.Material.create({ id:13, name: 'Resíduo em geral' });
+	model.Material.create({ id:14, name: 'Sucata' });
 	res.status(200).send('Materials criados com sucesso.');
 });
 
