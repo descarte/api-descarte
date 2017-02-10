@@ -15,9 +15,17 @@ router.route('/')
 		); 
 	})
 	.post(function(req, res) {
-		console.log(req.body);
-  		res.json(req.body);
-		//res.status(200).send(req.body);
+		model.Spot.create({
+			name: req.body.name,
+			lat: req.body.lat,
+			lng: req.body.lng,
+			phone: req.body.phone,
+			site: req.body.site,
+			TypeId: req.body.TypeId
+		}).done(function (err, spot) {
+			spot.setMaterials(req.body.Materials);
+		});	
+		res.json();
 	});
 
 router.route('/:id')
@@ -43,3 +51,4 @@ router.route('/:id')
 		res.status(404).end();
 	});
 module.exports = router;
+
